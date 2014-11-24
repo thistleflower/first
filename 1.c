@@ -109,7 +109,8 @@ void getH(){
 	
 
 	
-	H = H1 + H2 + ht + 2;
+	//H = H1 + H2 + ht + 2;
+	H = H1 + H2 + ht;
 	printf("\nH = %d\n", H);	
 }
 
@@ -163,7 +164,7 @@ void take_array(){
 		}
 	}
 
-	for(int i = 0; i < count1; i++){
+	/*for(int i = 0; i < count1; i++){
 		if (or1 == 1) {
 			y = (int)round(H2/2.0) - (int)h2[i];
 			x = H2 + ht + 1 + (int)round(H1/2.0) + (int)h1[i];
@@ -176,6 +177,29 @@ void take_array(){
 		h[i][y] = 1;
 		h[i][x] = 1;
 		
+	}*/
+	for(int i = 0; i < count1; i++){
+		
+		if ( or1 == 1) {
+			x = (int)round(H2/2.0) - (int)h2[i];
+			y = H2 + ht + 1 + (int)round(H1/2.0) + (int)h1[i];
+		} else {
+			x = (int)round(H1/2.0) - (int)h1[i];
+			y = H1 + ht + (int)round(H2/2.0) + (int)h2[i];
+		}
+		printf("%d\n", x);
+		
+		for(int j=0; j< H; j++){
+			if( j >= y){
+				h[i][j] = 1;
+			} else if ( j < x ){
+				h[i][j] = 2;
+			} else {
+				h[i][j] = 0;
+			}
+			
+		}
+		//printf("\n");
 	}
 	// output tube
 	for(int i = 0; i < count1; i++){
@@ -200,3 +224,4 @@ int main (int argc, char **argv) {
 	//~ }
 	return 0;
 }
+
