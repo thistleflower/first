@@ -31,7 +31,76 @@ L = dx * (n - 1)
 H = h1 + h2 + ht
 k * H / L < 7
 */
+typedef struct{
+	int kind;
+	float speed;
+	float weight;
+	int type;
+} cells;
+	
+void getWeight (int i, float w) {
+	switch (i){
+		case 1:
+			w = 1.0/9.0;
+			break;
+		case 3:
+			w = 1.0/9.0;
+			break;
+		case 5:
+			w = 1.0/9.0;
+			break;
+		case 7:
+			w = 1.0/9.0;
+			break;
+		case 2:
+			w = 1.0/36.0;
+			break;
+		case 4:
+			w = 1.0/36.0;
+			break;
+		case 6:
+			w = 1.0/36.0;
+			break;
+		case 8:
+			w = 1.0/36.0;
+			break;
+		case 9:
+			w = 4.0/9.0;
+			break;
+	}
+}
 
+void getSpeed (int i, float v){
+	switch (i) {
+		case 1:
+			v = c;//(cos [(i-1)pi/4], sin [(i-1)pi/4])* c
+			break;
+		case 3:
+			v = c;
+			break;
+		case 5:
+			v = c;
+			break;
+		case 7:
+			v = c;
+			break;
+		case 2: 
+			v = c*sqrt(2); //(cos [(i-1)pi/4], sin [(i-1)pi/4])* sqrt(2)*c
+			break;
+		case 4:
+			v = c*sqrt(2);
+			break;
+		case 6:
+			v = c*sqrt(2);
+			break;
+		case 8:
+			v = c*sqrt(2);
+			break;
+		case 9:
+			v = 1; // (0, 0)
+			break;
+	}
+} 
 float getHx(float *arr, int size){
 	float max = arr[0], min = arr[0];
 	float h;
